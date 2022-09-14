@@ -1,0 +1,17 @@
+https://stackoverflow.com/questions/28236870/error-undefined-reference-to-stdcout 
+
+-for c++ programs
+
+Gotta actually be in the folder that has the cpp file in it to compile and run
+
+
+
+Great tool for comparing two strings - https://text-compare.com/
+
+
+vector error: expected primary-expression before 'int'
+- forgot to do std::vector and just did vector
+
+https://www.geeksforgeeks.org/check-if-given-number-is-perfect-square-in-cpp/
+https://www.geeksforgeeks.org/print-all-perfect-squares-from-the-given-range/
+- formula for finding perfect squares
