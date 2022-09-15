@@ -1,7 +1,6 @@
 #include<iostream>
-#include <vector>
 #include <unordered_set>
-#include <cmath>
+
 
 int main()
 {
@@ -11,71 +10,49 @@ int main()
   
   for (int i = 0; i < num; i++)
   {
-    int min; 
-    int max; 
+    int distance_1; 
+    int distance_2; 
+    int number_of_presses;
+    std::unordered_set <int> distance_set;
     
-    std::cin >> min >> max;
+    std::cin >> distance_1 >> distance_2 >> number_of_presses;
 
-    //number dividable by 12
-    //bool found_12_num = false;
-    //int current_number = min;
-    //int num12;
+      //more formatting code
+      if(distance_1>distance_2){
+          int temp = distance_2;
+          distance_2 = distance_1;
+          distance_1 = temp;
+      }
 
-    /*while( found_12_num == false && current_number <= max) {
-        if(current_number%12 == 0){
-            num12 = current_number;
-            found_12_num = true;
-        }else{
-            current_number = current_number +1;
+      //formating code
+      bool first_distance = true;
+
+    int distance = -12222;  //set it to something random so it is easy to tell;
+    for(int i = 0; i<number_of_presses; i++){
+        distance = (distance_2*i) + (distance_1*(number_of_presses - i));
+
+        if(distance_set.find(distance) == distance_set.end()){
+            distance_set.insert(distance);
+            if(first_distance){
+                std::cout<<distance;
+                first_distance = false;
+            }else{
+                std::cout<<" "<<distance;
+            }
+            /*if (i != number_of_presses-1){
+                std::cout<<" ";
+            }*/
         }
-
-    }*/
-
-    int left_over = max%12;
-    int last_12 = max - left_over;
-    std::unordered_set <int> set12;
-    int number_of_12 = 0;
-    while(last_12 >= min){
-        //add to hashmap
-        set12.insert(last_12);
-        last_12 = last_12 - 12;
-        number_of_12 = number_of_12 + 1;
+        //distance_set.insert(distance);
+        //std::cout<<distance<<" ";
     }
-
-
-
-
-
-    //number of perfect squares
-
-    bool found_perfect_square = false;
-    int perfect_square;
-    std::vector<int> perfect_squares;
-    int current_number = min;
-
-    while( found_perfect_square == false && current_number <= max){
-        //check if the current number is a perfect square
-        if(ceil((double) std::sqrt(current_number)) == floor((double) std::sqrt(current_number))){
-            found_perfect_square = true;
-            perfect_square = current_number;
-            //perfect_squares.push_back(perfect_square);
-        }else{
-            current_number = current_number +1;
-        }
+    //doing this for formatting of autograder
+    distance = (distance_2*number_of_presses);
+    if(distance_set.find(distance) == distance_set.end()) {
+        std::cout<<" "<<distance<<std::endl;
+      }else{
+        std::cout<<std::endl;
     }
-    //now use the formula for finding perfect squares
-    while(perfect_square <= max){
-        perfect_squares.push_back(perfect_square);
-        perfect_square = perfect_square + ((std::sqrt(perfect_square) * 2)+1);
-    }
-
-    int number_in_both = 0;
-    for(int i = 0; i<perfect_squares.size();i++){
-        if(set12.find(perfect_squares[i]) != set12.end()){
-            number_in_both = number_in_both + 1;
-        }
-    }
-
-    std::cout<<number_of_12<<" "<<perfect_squares.size()<<" "<<number_in_both<<std::endl;
+    //std::cout<<distance<<std::endl;
   }
 }

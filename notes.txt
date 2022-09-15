@@ -15,3 +15,11 @@ vector error: expected primary-expression before 'int'
 https://www.geeksforgeeks.org/check-if-given-number-is-perfect-square-in-cpp/
 https://www.geeksforgeeks.org/print-all-perfect-squares-from-the-given-range/
 - formula for finding perfect squares
+
+
+https://stackoverflow.com/questions/16381828/how-to-find-the-number-of-values-in-a-given-range-divisible-by-a-given-value
+- finding numbers in a range in constant time
+
+
+https://stackoverflow.com/questions/19081673/big-o-notation-of-exponential-functions
+- on why 3^n does not have the same big 0 as 4^n
