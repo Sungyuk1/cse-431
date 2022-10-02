@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/3578083/what-is-the-best-way-to-use-a-hashmap-in-c - c++ map use red black trees
+under the hood. Access is o(logn)
