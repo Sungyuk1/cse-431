@@ -1,67 +1,51 @@
 #include <iostream>
-#include <vector>
-#include <queue>
-#include <bits/stdc++.h>
-#include <set>
 #include <unordered_map>
 using namespace std;
 
-
-//By default, C++ creates a max-heap for priority queue.
-
 int main()
 {
-    int E; //Number of emails
+    int C; //Number of ids
 
-    std::cin >> E;
+    std::cin >> C;
 
-    vector<int> stack;
-    priority_queue<int>pq(stack.begin(),stack.end());
-    //set<int> removed;
-    //first one is number, second one is number of times it has been removed
-    unordered_map<int, int> removed;
+    unordered_map<int, int> map;
 
-
-    for (int i = 0; i < E; i++)
+    for (int i = 0; i < C; i++)
     {
-        int direction;
-        int value;
-        std::cin >>direction;
+        int temp;
+        std::cin >> temp;
 
-        if(direction == 1) {
-            cin >> value;
-            stack.push_back(value);
-            pq.push(value);
+        //inset into map
+        if (map.find(temp) == map.end()){
+            map[temp] = 1;
+        }else{
+            map[temp] = map[temp] + 1;
+        }
+    }
 
-        }else if(direction == 2){
-            int to_remove = stack[stack.size()-1];
-            stack.pop_back();
-            //removed.insert(to_remove);
-            if (removed.find(to_remove) == removed.end()) {
-                //not in the table yet
-                removed[to_remove] = 1;
-            }else{
-                removed[to_remove] = removed[to_remove] + 1;
-            }
+    //set it to arbitrary value
+    int most_common = -9999999;
+    int largest_value = -999999999;
 
+    for (auto i = map.begin(); i != map.end(); i++){
 
-        }else if(direction == 3){
-            for(int j = 0; j< pq.size(); j++){
-                int current_value = pq.top();
-                //cout<<"Current Value right now in 3 is : " << current_value<<endl;
-                if(removed.find(current_value) == removed.end()){
-                    cout<<current_value<<endl;
-                    j = pq.size();
-                }else if(removed[current_value] == 0){
-                    cout<<current_value<<endl;
-                    j = pq.size();
-                }else{
-                    pq.pop();
-                    j--;   // need to make smaller cause popping
-                    removed[current_value] = removed[current_value] - 1;
-                }
+        //cout<<"current value is : first-"<<i->first<<" second-"<<i->second<<endl;
+        if(i->second >largest_value){
+            most_common = i->first;
+            largest_value= i->second;
+        }
+        if(i->second == largest_value) {
+            if(i->first < most_common){
+                most_common= i->first;
             }
 
         }
+
+       }
+    //edge case
+    if(map.size() == 0){
+        cout<<""<<endl;
     }
+
+    std::cout<<most_common<<endl;
     }
